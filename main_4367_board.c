@@ -2119,7 +2119,7 @@ void main()
 
 		send_port(&frame); //frame-1, weight
 
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------
 
 		//angle_value_canbus = abs((int) (Vehicle_Angle * 100)); //Ted mark here
@@ -2139,7 +2139,7 @@ void main()
 		frame.data[7] = (angle_value_canbus >> 24 ) & 0xff;
 
 		send_port(&frame); //frame-2, angle
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------
 
 		multi_canbus = (int) (multiplicator * 100); //Ted mark here
@@ -2160,7 +2160,7 @@ void main()
 		frame.data[7] = (multi_canbus >> 24 ) & 0xff;
 
 		send_port(&frame);//frame-3, multiplicator
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------
 
 		acc_canbus = (int) (gyroReadings[3] * 100); //Ted mark here
@@ -2178,7 +2178,7 @@ void main()
 		frame.data[7] = (acc_canbus >> 24 ) & 0xff;
 
 		send_port(&frame);//frame-4, accl_x
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------
 
 		acc_canbus = (int) (gyroReadings[4] * 100); //Ted mark here
@@ -2196,7 +2196,7 @@ void main()
 		frame.data[7] = (acc_canbus >> 24 ) & 0xff;
 
 		send_port(&frame);//frame-5, accl_y
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------
 
 		//Ted mark temporary disable it
@@ -2215,7 +2215,7 @@ void main()
 		frame.data[7] = (acc_canbus >> 24 ) & 0xff;
 
 		send_port(&frame);//frame-6, accl_z
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------
 
 		//Ted mark 2018-07-11 for now just use it for test
@@ -2235,7 +2235,7 @@ void main()
 		frame.data[7] = (lc_value_canbus >> 24 ) & 0xff;
 
 		send_port(&frame);//frame-7, uncompensated weight
-		//Sleep(1000);
+		Sleep(1000);
 		//-----------------------------------------------
 
 		//Ted mark need double check this mix value
@@ -2254,7 +2254,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-8, sc_mode+active number
-		//Sleep(1000);
+		Sleep(1000);
 		//------------------------------------------------
 //		excitation_v_can = excitation_v * 10; //Ted mark - 4.9 -> 49
 
@@ -2269,6 +2269,7 @@ void main()
 		frame.data[7] = 0x00;
 
 		send_port(&frame);//frame-9, excitation voltage 
+		Sleep(1000);
 		//---------------------------------------------i
 
 		frame.data[0] = 0x0a;
@@ -2282,7 +2283,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-10, channel 1 status 
-		//Sleep(1000);
+		Sleep(1000);
 		//-------------------------------------------
 
 		frame.data[0] = 0x0b;
@@ -2296,7 +2297,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-11, channel 2 status 
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------------------
 	
 		frame.data[0] = 0x0c;
@@ -2310,7 +2311,7 @@ void main()
 		frame.data[7] = 0x00;
 
 		send_port(&frame);//frame-12, channel 3 status 
-		//Sleep(1000);
+		Sleep(1000);
 		//-------------------------------------------
 
 		frame.data[0] = 0x0d;
@@ -2324,7 +2325,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-13, channel 4 status 
-		//Sleep(1000);
+		Sleep(1000);
 		//-------------------------------------	frame.data[0] = lcStatus[3] & 0xff; 
 
 		frame.data[0] = 0x0e;
@@ -2338,7 +2339,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-14, channel 5 status 
-		//Sleep(1000);
+		Sleep(1000);
 		//---------------------------------------------
 
 		acc_x_ave_eng_can = (int) (acc_x_ave_eng[0] * 100); 
@@ -2354,7 +2355,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-15, loadcell #1 Ave Acc_x 
-		//Sleep(1000);
+		Sleep(1000);
 		//-------------------------------------------------
 
 		acc_y_ave_eng_can = (int) (acc_y_ave_eng[0] * 100); 
@@ -2370,7 +2371,7 @@ void main()
 		frame.data[7] = 0xff;
 
 		send_port(&frame);//frame-16, loadcell #1 Ave Acc_y 
-		//Sleep(1000);
+		Sleep(1000);
 		//-------------------------------------------------
 
 		acc_z_ave_eng_can = (int) (acc_z_ave_eng[0] * 100); 

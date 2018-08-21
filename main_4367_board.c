@@ -2246,7 +2246,9 @@ void main()
 		frame.data[2] = 0x00;
 		frame.data[3] = 0x00;
 	
-		frame.data[4] = (sc_mode & 0x3) | 0xff;
+		//Ted find a bug on 2018-08-21
+		//frame.data[4] = (sc_mode & 0x3) | 0xff; //wrong 
+		frame.data[4] = (sc_mode & 0x3) & 0xff;
 		frame.data[5] = 0xff;
 		frame.data[6] = (active_lc_num & 0x7) & 0xff;
 		frame.data[7] = 0xff;
@@ -2257,23 +2259,23 @@ void main()
 //		excitation_v_can = excitation_v * 10; //Ted mark - 4.9 -> 49
 
 		frame.data[0] = 0x09; 
-		frame.data[1] = 0xff; 
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
-	
+		frame.data[1] = 0x00; 
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
+
 		frame.data[4] = excitation_v & 0xff;
-		frame.data[5] = 0xff;
-		frame.data[6] = 0xff;
-		frame.data[7] = 0xff;
+		frame.data[5] = (excitation_v >> 8 ) & 0xff;
+		frame.data[6] = 0x00;
+		frame.data[7] = 0x00;
 
 		send_port(&frame);//frame-9, excitation voltage 
-		//---------------------------------------------
+		//---------------------------------------------i
 
 		frame.data[0] = 0x0a;
-		frame.data[1] = 0xff; 
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
-	
+		frame.data[1] = 0x00; 
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
+
 		frame.data[4] = lcStatus[0] & 0xff; 
 		frame.data[5] = 0xff;
 		frame.data[6] = 0xff;
@@ -2284,10 +2286,10 @@ void main()
 		//-------------------------------------------
 
 		frame.data[0] = 0x0b;
-		frame.data[1] = 0xff;
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
-	
+		frame.data[1] = 0x00;
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
+
 		frame.data[4] = lcStatus[1] & 0xff; 
 		frame.data[5] = 0xff;
 		frame.data[6] = 0xff;
@@ -2298,23 +2300,23 @@ void main()
 		//---------------------------------------------
 	
 		frame.data[0] = 0x0c;
-		frame.data[1] = 0xff; 
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
+		frame.data[1] = 0x00; 
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
 	
 		frame.data[4] = lcStatus[2] & 0xff; 
-		frame.data[5] = 0xff;
-		frame.data[6] = 0xff;
-		frame.data[7] = 0xff;
+		frame.data[5] = 0x00;
+		frame.data[6] = 0x00;
+		frame.data[7] = 0x00;
 
 		send_port(&frame);//frame-12, channel 3 status 
 		//Sleep(1000);
 		//-------------------------------------------
 
 		frame.data[0] = 0x0d;
-		frame.data[1] = 0xff;
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
+		frame.data[1] = 0x00;
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
 	
 		frame.data[4] = lcStatus[3] & 0xff; 
 		frame.data[5] = 0xff;
@@ -2326,9 +2328,9 @@ void main()
 		//-------------------------------------	frame.data[0] = lcStatus[3] & 0xff; 
 
 		frame.data[0] = 0x0e;
-		frame.data[1] = 0xff;
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
+		frame.data[1] = 0x00;
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
 	
 		frame.data[4] = lcStatus[4] & 0xff; 
 		frame.data[5] = 0xff;
@@ -2342,9 +2344,9 @@ void main()
 		acc_x_ave_eng_can = (int) (acc_x_ave_eng[0] * 100); 
 
 		frame.data[0] = 0x0f;
-		frame.data[1] = 0xff; 
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
+		frame.data[1] = 0x00; 
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
 	
 		frame.data[4] = acc_x_ave_eng_can & 0xff; 
 		frame.data[5] = 0xff;
@@ -2358,9 +2360,9 @@ void main()
 		acc_y_ave_eng_can = (int) (acc_y_ave_eng[0] * 100); 
 
 		frame.data[0] = 0x10;
-		frame.data[1] = 0xff; 
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
+		frame.data[1] = 0x00; 
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
 	
 		frame.data[4] = acc_y_ave_eng_can & 0xff; 
 		frame.data[5] = 0xff;
@@ -2374,9 +2376,9 @@ void main()
 		acc_z_ave_eng_can = (int) (acc_z_ave_eng[0] * 100); 
 
 		frame.data[0] = 0x11;
-		frame.data[1] = 0xff; 
-		frame.data[2] = 0xff;
-		frame.data[3] = 0xff;
+		frame.data[1] = 0x00; 
+		frame.data[2] = 0x00;
+		frame.data[3] = 0x00;
 	
 		frame.data[4] = acc_z_ave_eng_can & 0xff; 
 		frame.data[5] = 0xff;
